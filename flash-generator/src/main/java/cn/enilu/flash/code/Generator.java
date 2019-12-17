@@ -64,18 +64,15 @@ public class Generator {
     }
     static Pattern includePattern = Pattern.compile(".*");
     public static void main(String[] args) throws Exception {
-
         String configPath = "code/code.json";
         String basePath = "";
-
-        String module = "test";
-        String basePackageName = "cn.enilu.flash";
-        String controllerPackageName = "api.controller."+module;
-        String servicePackageName = "service."+module;
-        String repositoryPackageName = "dao."+module;
-        String modelPackageName = "bean.entity."+module;
-
         String outputDir = "src/main/java";
+        String module = "";
+        String basePackageName = "";
+        String controllerPackageName = "";
+        String servicePackageName = "";
+        String repositoryPackageName = "";
+        String modelPackageName = "";
         boolean force = false;
         String baseUri = "/";
         String[] types = {"all"};
@@ -84,34 +81,19 @@ public class Generator {
         options.addOption("basePath","base path",true,"base path");
         options.addOption("i", "include", true, "include table pattern");
         options.addOption("module", "module", true, "current module name");
-        options.addOption("p", "package", true, "base package name,default:cn.enilu.flash");
-        options.addOption("ctr",
-                          "package",
-                          true,
-                          "controller base package name,default:controllers/${package}");
-        options.addOption("mod",
-                          "package",
-                          true,
-                          "model base package name,default:models/${package}");
-        options.addOption("repo",
-                "package",
-                true,
-                "repository base package name,default:repository/${package}");
-        options.addOption("sev",
-                          "package",
-                          true,
-                          "service base package name,default:services/${package}");
-        options.addOption("v",
-                          "views",
-                          true,
-                          "for generator pages,default:all pages,eg: -v will generate vue,js,api.js");
+        options.addOption("p", "package", true, "base package name,default:com.sinosoft.dlis");
+        options.addOption("ctr","package",true,"controller base package name,default:controllers/${package}");
+        options.addOption("mod","package",true,"model base package name,default:models/${package}");
+        options.addOption("repo","package",true,"repository base package name,default:repository/${package}");
+        options.addOption("sev","package",true,"service base package name,default:services/${package}");
+        options.addOption("v","views",true,"for generator pages,default:all pages,eg: -v will generate vue,js,api.js");
         options.addOption("u", "base-uri", true, "base uri prefix, default is /");
         options.addOption("f", "force", false, "force generate file even if file exists");
         options.addOption("h", "help", false, "show help message");
+
         CommandLineParser parser = new GnuParser();
         try {
             CommandLine commandLine = parser.parse(options, args);
-
             if (commandLine.hasOption("i")) {
                 includePattern = Pattern.compile(commandLine.getOptionValue("i"),
                         Pattern.CASE_INSENSITIVE);
@@ -119,7 +101,6 @@ public class Generator {
             if(commandLine.hasOption("basePath")){
                 basePath =commandLine.getOptionValue("basePath")+File.separator;
             }
-
             if (commandLine.hasOption("p")) {
                 basePackageName = commandLine.getOptionValue("p");
             }
@@ -226,8 +207,7 @@ public class Generator {
     private static void generateViews(String basePath,CodeConfig codeConfig,boolean force,
                                       TableDescriptor table,
                                       Generator generator,
-                                      String[] pages)
-            throws IOException {
+                                      String[] pages) throws IOException {
         //生成vue版本相关文件
         File apiFile = new File(basePath+codeConfig.getViewModel()+"/src/api/"+table.getLastPackageName()+File.separator+table.getEntityNameLowerFirstChar()+".js");
         generator.generate(null,  "code/view/api.js.vm", apiFile, force);
@@ -235,7 +215,7 @@ public class Generator {
         File vueFile = new File(basePath+codeConfig.getViewModel()+"/src/views/"+table.getLastPackageName()+File.separator+table.getEntityNameLowerFirstChar()+File.separator+"index.vue");
         generator.generate(null,  "code/view/index.vue.vm", vueFile, force);
 
-        File jsFile = new File(basePath+codeConfig.getViewModel()+"/src/views/"+table.getLastPackageName()+File.separator+table.getEntityNameLowerFirstChar()+".js");
+        File jsFile = new File(basePath+codeConfig.getViewModel()+"/src/views/"+table.getLastPackageName()+File.separator+table.getEntityNameLowerFirstChar()+File.separator+table.getEntityNameLowerFirstChar()+".js");
         generator.generate(null,  "code/view/index.js.vm", jsFile, force);
 
     }
