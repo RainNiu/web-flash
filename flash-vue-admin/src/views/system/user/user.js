@@ -1,5 +1,4 @@
 import { deleteUser, getList, saveUser, remove, setRole } from '@/api/system/user'
-import { list as deptList } from '@/api/system/dept'
 import { parseTime } from '@/utils/index'
 import { roleTreeListByIdUser } from '@/api/system/role'
 // 权限判断指令
@@ -22,29 +21,15 @@ export default {
       },
       formVisible: false,
       formTitle: '添加用户',
-      deptTree: {
-        show: false,
-        data: [],
-        defaultProps: {
-          id: 'id',
-          label: 'simplename',
-          children: 'children'
-        }
-      },
       isAdd: true,
       form: {
         id: '',
         account: '',
         name: '',
-        birthday: '',
-        sex: 1,
         email: '',
         password: '',
         rePassword: '',
-        dept: '',
-        status: true,
-        deptid: 1,
-        deptName: ''
+        status: true
       },
       rules: {
         account: [
@@ -86,9 +71,6 @@ export default {
   },
   methods: {
     init() {
-      deptList().then(response => {
-        this.deptTree.data = response.data;
-      });
       this.fetchData();
     },
     fetchData() {
@@ -138,14 +120,10 @@ export default {
         id: '',
         account: '',
         name: '',
-        birthday: '',
-        sex: 1,
         email: '',
         password: '',
         rePassword: '',
-        dept: '',
-        status: true,
-        deptid: 1
+        status: true
       }
     },
     add() {
@@ -179,7 +157,6 @@ export default {
               //冻结
               form.status = 2;
             }
-            form.birthday = parseTime(form.birthday, '{y}-{m}-{d}');
             form.createtime = parseTime(form.createtime);
             saveUser(form).then(response => {
               this.$message({
@@ -246,11 +223,6 @@ export default {
         }).catch(() => {
         })
       }
-    },
-    handleNodeClick(data, node) {
-      this.form.deptid = data.id;
-      this.form.deptName = data.simplename;
-      this.deptTree.show = false;
     },
 
     openRole() {

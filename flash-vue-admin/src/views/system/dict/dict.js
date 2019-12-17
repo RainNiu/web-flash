@@ -5,7 +5,6 @@ export default {
     return {
       formVisible: false,
       formTitle: '添加字典',
-      deptList: [],
       roleList: [],
       isAdd: true,
       permissons: [],

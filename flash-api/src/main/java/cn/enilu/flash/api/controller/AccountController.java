@@ -94,7 +94,6 @@ public class AccountController extends BaseController{
             Map map = Maps.newHashMap("name",user.getName(),"role","admin","roles", shiroUser.getRoleCodes());
             map.put("permissions",shiroUser.getUrls());
             Map profile = (Map) Mapl.toMaplist(user);
-            profile.put("dept",shiroUser.getDeptName());
             profile.put("roles",shiroUser.getRoleNames());
             map.put("profile",profile);
 

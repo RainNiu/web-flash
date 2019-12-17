@@ -74,7 +74,6 @@
                 <version>${spring.boot.version}</version>
             </dependency>
 
-
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
@@ -188,19 +187,9 @@
                 <version>${springframework.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-messaging</artifactId>
-                <version>${springframework.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.mail</groupId>
-                <artifactId>mail</artifactId>
-                <version>${mail.version}</version>
             </dependency>
             <!-- Http Lib -->
             <dependency>
@@ -271,36 +260,6 @@
                 <artifactId>spring-boot-starter-jdbc</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
-            <!--quart定时任务-->
-            <dependency>
-                <groupId>org.quartz-scheduler</groupId>
-                <artifactId>quartz</artifactId>
-                <version>${quartz.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.quartz-scheduler</groupId>
-                <artifactId>quartz-jobs</artifactId>
-                <version>${quartz.version}</version>
-            </dependency>
-            <!--export excel -->
-            <dependency>
-                <groupId>org.jxls</groupId>
-                <artifactId>jxls</artifactId>
-                <version>2.3.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jxls</groupId>
-                <artifactId>jxls-poi</artifactId>
-                <version>1.0.9</version>
-            </dependency>
-
-            <!-- message  start-->
-            <dependency>
-                <groupId>com.github.qcloudsms</groupId>
-                <artifactId>qcloudsms</artifactId>
-                <version>1.0.6</version>
-            </dependency>
-            <!-- message end-->
         </dependencies>
 
     </dependencyManagement>

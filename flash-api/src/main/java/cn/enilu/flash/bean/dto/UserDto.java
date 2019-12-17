@@ -24,18 +24,11 @@ public class UserDto{
 	private String salt;
 	@NotBlank(message = "姓名不能为空")
 	private String name;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date birthday;
-	private Integer sex;
 	private String email;
-	private String phone;
 	private String roleid;
-	private Long deptid;
 	private Long eduorgid;
 	private Integer status;
 	private Date createtime;
-	private Integer version;
-	private String avatar;
 
 
 }

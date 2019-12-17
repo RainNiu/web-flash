@@ -34,7 +34,6 @@ import java.util.Optional;
 public class ConstantFactory implements IConstantFactory {
     public static TimeCacheMap<String, String> cache = new TimeCacheMap<String, String>(3600, 2);
     private RoleRepository roleRepository = SpringContextHolder.getBean(RoleRepository.class);
-    private DeptRepository deptRepository = SpringContextHolder.getBean(DeptRepository.class);
     private DictCache dictCache = SpringContextHolder.getBean(DictCache.class);
     private DictRepository dictRepository = SpringContextHolder.getBean(DictRepository.class);
     private UserRepository userRepository = SpringContextHolder.getBean(UserRepository.class);
@@ -150,27 +149,6 @@ public class ConstantFactory implements IConstantFactory {
         Role roleObj = getRole(roleId);
         if (StringUtil.isNotNullOrEmpty(roleObj) && StringUtil.isNotEmpty(roleObj.getName())) {
             return roleObj.getTips();
-        }
-        return "";
-    }
-
-    /**
-     * 获取部门名称
-     */
-    @Override
-    public String getDeptName(Long deptId) {
-        if (deptId == null) {
-            return null;
-        }
-        String val = get(CacheKey.DEPT_NAME + deptId);
-        if (StringUtil.isNotEmpty(val)) {
-            return val;
-        }
-        Dept dept = getDept(deptId);
-        if (StringUtil.isNotNullOrEmpty(dept) && StringUtil.isNotEmpty(dept.getFullname())) {
-            val = dept.getFullname();
-            set(CacheKey.DEPT_NAME + deptId, val);
-            return val;
         }
         return "";
     }
@@ -328,41 +306,6 @@ public class ConstantFactory implements IConstantFactory {
         return LogObjectHolder.me().get().toString();
     }
 
-    /**
-     * 获取子部门id
-     */
-    @Override
-    public List<Long> getSubDeptId(Long deptid) {
-
-        List<Dept> depts = this.deptRepository.findByPidsLike("%[" + deptid + "]%");
-
-        ArrayList<Long> deptids = new ArrayList<>();
-
-        if (depts != null && depts.size() > 0) {
-            for (Dept dept : depts) {
-                deptids.add(dept.getId());
-            }
-        }
-
-        return deptids;
-    }
-
-    /**
-     * 获取所有父部门id
-     */
-    @Override
-    public List<Integer> getParentDeptIds(Long deptid) {
-        Dept dept = getDept(deptid);
-        String pids = dept.getPids();
-        String[] split = pids.split(",");
-        ArrayList<Integer> parentDeptIds = new ArrayList<>();
-        for (String s : split) {
-            parentDeptIds.add(Integer.valueOf(StringUtil.removeSuffix(StringUtil.removePrefix(s, "["), "]")));
-        }
-        return parentDeptIds;
-    }
-
-
     @Override
     public List<Dict> getDicts(String pname) {
         return dictCache.getDictsByPname(pname);
@@ -376,14 +319,7 @@ public class ConstantFactory implements IConstantFactory {
         }
         return null;
     }
-    @Override
-    public Dept getDept(Long id) {
-        Optional<Dept> optional = deptRepository.findById(id);
-        if (optional.isPresent()) {
-            return optional.get();
-        }
-        return null;
-    }
+
     @Override
     public Menu getMenu(Long id) {
         Optional<Menu> optiona = menuRepository.findById(id);

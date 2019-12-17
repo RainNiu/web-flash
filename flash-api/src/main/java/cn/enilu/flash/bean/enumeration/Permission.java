@@ -24,8 +24,5 @@ public interface Permission {
     String USER = "mgr";
     String USER_EDIT = "mgrEdit";
     String USER_DEL = "mgrDelete";
-    String DEPT = "dept";
-    String DEPT_EDIT = "deptEdit";
-    String DEPT_DEL = "deptDelete";
 
 }

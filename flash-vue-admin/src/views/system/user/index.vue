@@ -44,29 +44,14 @@
           {{scope.row.name}}
         </template>
       </el-table-column>
-      <el-table-column label="性别">
-        <template slot-scope="scope">
-          {{scope.row.sexName}}
-        </template>
-      </el-table-column>
       <el-table-column label="角色">
         <template slot-scope="scope">
           {{scope.row.roleName}}
         </template>
       </el-table-column>
-      <el-table-column label="部门">
-        <template slot-scope="scope">
-          {{scope.row.deptName}}
-        </template>
-      </el-table-column>
       <el-table-column label="邮箱">
         <template slot-scope="scope">
           {{scope.row.email}}
-        </template>
-      </el-table-column>
-      <el-table-column label="电话">
-        <template slot-scope="scope">
-          {{scope.row.phone}}
         </template>
       </el-table-column>
       <el-table-column label="创建时间">
@@ -79,8 +64,6 @@
           {{scope.row.statusName}}
         </template>
       </el-table-column>
-
-
     </el-table>
 
     <el-pagination
@@ -111,15 +94,6 @@
               <el-input v-model="form.name"  minlength=1></el-input>
             </el-form-item>
           </el-col>
-
-          <el-col :span="12">
-            <el-form-item label="性别">
-              <el-radio-group v-model="form.sex">
-                <el-radio :label="1">男</el-radio>
-                <el-radio :label="2">女</el-radio>
-              </el-radio-group>
-            </el-form-item>
-          </el-col>
           <el-col :span="12">
             <el-form-item label="邮箱" prop="email">
               <el-input v-model="form.email"></el-input>
@@ -136,39 +110,8 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="电话" prop="phone">
-              <el-input v-model="form.phone"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="所属部门" >
-              <el-input
-                placeholder="请选择所属部门"
-                v-model="form.deptName"
-                readonly="readonly"
-                @click.native="deptTree.show  = !deptTree.show">
-              </el-input>
-              <el-tree v-if="deptTree.show"
-                       empty-text="暂无数据"
-                       :expand-on-click-node="false"
-                       :data="deptTree.data"
-                       :props="deptTree.defaultProps"
-                       @node-click="handleNodeClick"
-                       class="input-tree">
-              </el-tree>
-
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
             <el-form-item label="是否启用" prop="status">
               <el-switch v-model="form.status"></el-switch>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="出生日期">
-                <el-date-picker type="date" placeholder="选择日期" v-model="form.birthday" style="width: 100%;">
-
-                </el-date-picker>
             </el-form-item>
           </el-col>
         </el-row>

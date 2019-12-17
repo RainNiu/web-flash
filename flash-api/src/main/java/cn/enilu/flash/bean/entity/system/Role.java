@@ -28,8 +28,6 @@ public class Role extends BaseEntity {
     @NotBlank(message = "角色名称不能为空")
     private String name;
     @Column
-    private Long deptid;
-    @Column
     private String tips;
     @Column
     private Integer version;

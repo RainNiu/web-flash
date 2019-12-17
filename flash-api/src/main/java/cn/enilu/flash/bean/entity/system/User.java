@@ -20,8 +20,6 @@ import java.util.Date;
 @Data
 @EntityListeners(AuditingEntityListener.class)
 public class User  extends BaseEntity {
-    @Column
-    private String avatar;
     @Column(columnDefinition = "VARCHAR(32) COMMENT '账户'")
     private String account;
     @Column(columnDefinition = "VARCHAR(64) COMMENT '密码'")
@@ -30,20 +28,10 @@ public class User  extends BaseEntity {
     private String salt;
     @Column(columnDefinition = "VARCHAR(64) COMMENT '姓名'")
     private String name;
-    @Column
-    private Date birthday;
-    @Column
-    private Integer sex;
     @Column(columnDefinition = "VARCHAR(64) COMMENT 'email'")
     private String email;
-    @Column(columnDefinition = "VARCHAR(16) COMMENT '手机号'")
-    private String phone;
     @Column(columnDefinition = "VARCHAR(128) COMMENT '角色id列表，以逗号分隔'")
     private String roleid;
     @Column
-    private Long deptid;
-    @Column
     private Integer status;
-    @Column
-    private Integer version;
 }

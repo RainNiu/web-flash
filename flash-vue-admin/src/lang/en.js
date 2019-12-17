@@ -4,7 +4,6 @@ export default {
     system: 'System',
     operationMgr: 'Operation',
     menu: 'Menu',
-    dept: 'Department',
     mgr: 'Account',
     role: 'Role',
     dict: 'Dict',

@@ -46,11 +46,6 @@ public interface IConstantFactory {
     String getSingleRoleTip(Long roleId);
 
     /**
-     * 获取部门名称
-     */
-    String getDeptName(Long deptId);
-
-    /**
      * 获取菜单的名称们(多个)
      */
     String getMenuNames(String menuIds);
@@ -126,17 +121,6 @@ public interface IConstantFactory {
     String getCacheObject(String para);
 
     /**
-     * 获取子部门id
-     */
-    List<Long> getSubDeptId(Long deptid);
-
-    /**
-     * 获取所有父部门id
-     */
-    List<Integer> getParentDeptIds(Long deptid);
-
-
-    /**
      * 获取指定名称下的字典列表
      * @param pname
      * @return
@@ -144,7 +128,7 @@ public interface IConstantFactory {
     List<Dict> getDicts(String pname);
 
     Role getRole(Long id) ;
-    Dept getDept(Long id);
+
     Menu getMenu(Long id) ;
 
 }

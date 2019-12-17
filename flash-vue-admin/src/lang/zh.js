@@ -4,7 +4,6 @@ export default {
     system: '系统管理',
     operationMgr: '运维管理',
     menu: '菜单管理',
-    dept: '部门管理',
     mgr: '用户管理',
     role: '角色管理',
     dict: '字典管理',

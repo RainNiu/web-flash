@@ -1,16 +1,13 @@
 <template>
   <div class="app-container">
     <div class="user">
-      <strong>{{ user.name }}</strong><br>
-      <small>{{ user.dept }} &nbsp;&nbsp; {{ user.roles }}</small>
+      <strong>{{ user.name }}</strong> <small>{{ user.roles }}</small>
     </div>
     <el-row class="user-content" style="">
       <el-col :span="6" class="profile">
         <img class="user-avatar" src="@/assets/img/avatar.gif"><br>
-        <p><span class="title"><i class="el-icon-phone"></i>&nbsp;&nbsp;{{ user.phone }}</span></p>
         <p><span class="title"><i class="el-icon-message"></i>&nbsp;&nbsp;{{ user.email }}</span></p>
         <p><span class="title"><i class="el-icon-open"></i>&nbsp;&nbsp;{{ user.status == '1'?'启用' : '禁用' }}</span></p>
-        <p><span class="title"><i class="el-icon-location-outline"></i>&nbsp;&nbsp;上海市浦东大道290弄</span></p>
       </el-col>
       <el-col :span="18" style="padding-left:10px;">
         <el-tabs v-model="activeName" @tab-click="handleClick">
@@ -51,7 +48,6 @@
 </template>
 
 <script src="./updatePwd.js"></script>
-
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   @import "src/styles/common.scss";
