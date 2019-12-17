@@ -77,61 +77,61 @@ export default {
         published: 'success',
         draft: 'gray',
         deleted: 'danger'
-      }
-      return statusMap[status]
+      };
+      return statusMap[status];
     }
   },
   created() {
-    this.init()
+    this.init();
   },
   methods: {
     init() {
       deptList().then(response => {
-        this.deptTree.data = response.data
-      })
-      this.fetchData()
+        this.deptTree.data = response.data;
+      });
+      this.fetchData();
     },
     fetchData() {
-      this.listLoading = true
+      this.listLoading = true;
       getList(this.listQuery).then(response => {
-        this.list = response.data.records
-        this.listLoading = false
-        this.total = response.data.total
+        this.list = response.data.records;
+        this.listLoading = false;
+        this.total = response.data.total;
       })
     },
     search() {
       this.fetchData()
     },
     reset() {
-      this.listQuery.account = ''
-      this.listQuery.name = ''
-      this.fetchData()
+      this.listQuery.account = '';
+      this.listQuery.name = '';
+      this.fetchData();
     },
     handleFilter() {
-      this.listQuery.page = 1
-      this.getList()
+      this.listQuery.page = 1;
+      this.getList();
     },
     handleClose() {
 
     },
     fetchNext() {
-      this.listQuery.page = this.listQuery.page + 1
-      this.fetchData()
+      this.listQuery.page = this.listQuery.page + 1;
+      this.fetchData();
     },
     fetchPrev() {
-      this.listQuery.page = this.listQuery.page - 1
-      this.fetchData()
+      this.listQuery.page = this.listQuery.page - 1;
+      this.fetchData();
     },
     fetchPage(page) {
-      this.listQuery.page = page
-      this.fetchData()
+      this.listQuery.page = page;
+      this.fetchData();
     },
     changeSize(limit) {
-      this.listQuery.limit = limit
-      this.fetchData()
+      this.listQuery.limit = limit;
+      this.fetchData();
     },
     handleCurrentChange(currentRow, oldCurrentRow) {
-      this.selRow = currentRow
+      this.selRow = currentRow;
     },
     resetForm() {
       this.form = {
@@ -149,45 +149,45 @@ export default {
       }
     },
     add() {
-      this.resetForm()
-      this.formTitle = '添加用户'
-      this.formVisible = true
-      this.isAdd = true
+      this.resetForm();
+      this.formTitle = '添加用户';
+      this.formVisible = true;
+      this.isAdd = true;
     },
     validPasswd() {
       if (!this.isAdd) {
-        return true
+        return true;
       }
       if (this.form.password !== this.form.rePassword) {
-        return false
+        return false;
       }
       if (this.form.password === '' || this.form.rePassword === '') {
-        return false
+        return false;
       }
-      return true
+      return true;
     },
     saveUser() {
-      var self = this
+      var self = this;
       this.$refs['form'].validate((valid) => {
         if (valid) {
           if (this.validPasswd()) {
-            var form = self.form
+            var form = self.form;
             if (form.status === true) {
               //启用
-              form.status = 1
+              form.status = 1;
             } else {
               //冻结
-              form.status = 2
+              form.status = 2;
             }
-            form.birthday = parseTime(form.birthday, '{y}-{m}-{d}')
-            form.createtime = parseTime(form.createtime)
+            form.birthday = parseTime(form.birthday, '{y}-{m}-{d}');
+            form.createtime = parseTime(form.createtime);
             saveUser(form).then(response => {
               this.$message({
                 message: '提交成功',
                 type: 'success'
-              })
-              this.fetchData()
-              this.formVisible = false
+              });
+              this.fetchData();
+              this.formVisible = false;
             })
           } else {
             this.$message({
@@ -196,8 +196,8 @@ export default {
             })
           }
         } else {
-          console.log('error submit!!')
-          return false
+          console.log('error submit!!');
+          return false;
         }
       })
     },
@@ -208,23 +208,23 @@ export default {
       this.$message({
         message: '请选中操作项',
         type: 'warning'
-      })
-      return false
+      });
+      return false;
     },
     edit() {
       if (this.checkSel()) {
-        this.isAdd = false
+        this.isAdd = false;
 
-        this.form = this.selRow
-        this.form.status = this.selRow.statusName === '启用'
-        this.form.password = ''
-        this.formTitle = '修改用户'
-        this.formVisible = true
+        this.form = this.selRow;
+        this.form.status = this.selRow.statusName === '启用';
+        this.form.password = '';
+        this.formTitle = '修改用户';
+        this.formVisible = true;
       }
     },
     remove() {
       if (this.checkSel()) {
-        var id = this.selRow.id
+        var id = this.selRow.id;
 
         this.$confirm('确定删除该记录?', '提示', {
           confirmButtonText: '确定',
@@ -235,8 +235,8 @@ export default {
             this.$message({
               message: '删除成功',
               type: 'success'
-            })
-            this.fetchData()
+            });
+            this.fetchData();
           }).catch( err=>{
             this.$notify.error({
               title: '错误',
@@ -248,33 +248,33 @@ export default {
       }
     },
     handleNodeClick(data, node) {
-      this.form.deptid = data.id
-      this.form.deptName = data.simplename
-      this.deptTree.show = false
+      this.form.deptid = data.id;
+      this.form.deptName = data.simplename;
+      this.deptTree.show = false;
     },
 
     openRole() {
       if (this.checkSel()) {
         roleTreeListByIdUser(this.selRow.id).then(response => {
-          this.roleDialog.roles = response.data.treeData
-          this.roleDialog.checkedRoleKeys = response.data.checkedIds
-          this.roleDialog.visible = true
+          this.roleDialog.roles = response.data.treeData;
+          this.roleDialog.checkedRoleKeys = response.data.checkedIds;
+          this.roleDialog.visible = true;
         })
       }
     },
     setRole() {
-      var checkedRoleKeys = this.$refs.roleTree.getCheckedKeys()
-      var roleIds = ''
+      var checkedRoleKeys = this.$refs.roleTree.getCheckedKeys();
+      var roleIds = '';
       for (var index in checkedRoleKeys) {
         roleIds += checkedRoleKeys[index] + ','
       }
       var data = {
         userId: this.selRow.id,
         roleIds: roleIds
-      }
+      };
       setRole(data).then(response => {
-        this.roleDialog.visible = false
-        this.fetchData()
+        this.roleDialog.visible = false;
+        this.fetchData();
         this.$message({
           message: '提交成功',
           type: 'success'

@@ -49,80 +49,80 @@ export default {
     }
   },
   created() {
-    this.init()
+    this.init();
   },
   methods: {
     init() {
-      this.fetchData()
+      this.fetchData();
     },
     fetchData() {
-      this.listLoading = true
+      this.listLoading = true;
       getList().then(response => {
-        this.data = response.data
-        this.listLoading = false
+        this.data = response.data;
+        this.listLoading = false;
       })
     },
     handleNodeClick(data, node) {
-      this.form.pcode = data.code
-      this.form.pname = data.name
-      this.showTree = false
+      this.form.pcode = data.code;
+      this.form.pname = data.name;
+      this.showTree = false;
     },
     checkSel() {
       if (this.selRow && this.selRow.id) {
-        return true
+        return true;
       }
       this.$message({
         message: '请选中操作项',
         type: 'warning'
-      })
-      return false
+      });
+      return false;
     },
     add() {
-      this.form = {}
-      this.formTitle = '添加菜单'
-      this.formVisible = true
-      this.isAdd = true
+      this.form = {};
+      this.formTitle = '添加菜单';
+      this.formVisible = true;
+      this.isAdd = true;
     },
     save() {
-      var self = this
+      var self = this;
       this.$refs['form'].validate((valid) => {
         if (valid) {
-          const menuData = self.form
-          delete menuData.parent
-          delete menuData.children
+          const menuData = self.form;
+          delete menuData.parent;
+          delete menuData.children;
           save(menuData).then(response => {
             this.$message({
               message: '提交成功',
               type: 'success'
-            })
-            self.fetchData()
-            self.formVisible = false
+            });
+            self.fetchData();
+            self.formVisible = false;
           })
         } else {
-          return false
+          return false;
         }
       })
     },
     edit(row) {
-      this.form = row
+      this.form = row;
       if (row.isMenuName === '是') {
-        this.form.ismenu = 1
+        this.form.ismenu = 1;
       } else {
-        this.form.ismenu = 0
+        this.form.ismenu = 0;
       }
       if (row.statusName === '启用') {
-        this.form.status = 1
+        this.form.status = 1;
       } else {
-        this.form.status = 0
+        this.form.status = 0;
       }
       if (row.parent) {
-        this.form.pcode = row.parent.code
-        this.form.pname = row.parent.name
+        this.form.pcode = row.parent.code;
+        this.form.pname = row.parent.name;
       }
-      console.log(this.form.pcode)
-      this.formTitle = '编辑菜单'
-      this.formVisible = true
-      this.isAdd = false
+      console.log(this.form.pcode);
+      this.formTitle = '编辑菜单';
+      this.formVisible = true;
+      this.isAdd = false;
     },
     remove(row) {
       this.$confirm('确定删除该记录?', '提示', {

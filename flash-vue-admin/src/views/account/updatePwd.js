@@ -28,10 +28,10 @@ export default {
   },
   methods: {
     init(){
-      this.user = this.$store.state.user.profile
+      this.user = this.$store.state.user.profile;
     },
     handleClick(tab, event){
-      this.$router.push({ path: '/account/'+tab.name})
+      this.$router.push({ path: '/account/'+tab.name});
     },
     updatePwd() {
       this.$refs['form'].validate((valid) => {
@@ -48,7 +48,7 @@ export default {
           }).catch((err) => {
           })
         } else {
-          return false
+          return false;
         }
       })
     }

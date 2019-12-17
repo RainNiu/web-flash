@@ -25,10 +25,10 @@ export default {
     chart: ECharts
   },
   data() {
-    const data = []
+    const data = [];
     for (let i = 0; i <= 360; i++) {
-      const t = i / 180 * Math.PI
-      const r = Math.sin(2 * t) * Math.cos(2 * t)
+      const t = i / 180 * Math.PI;
+      const r = Math.sin(2 * t) * Math.cos(2 * t);
       data.push([r, i])
     }
     return {
@@ -176,18 +176,18 @@ export default {
   },
   methods: {
     fetchData() {
-      this.listLoading = true
-      const self = this
+      this.listLoading = true;
+      const self = this;
       getList(self.listQuery).then(response => {
         for (var i = 0; i < response.data.length; i++) {
-          var notice = response.data[i]
+          var notice = response.data[i];
           self.$notify({
             title: notice.title,
             message: notice.content,
             duration: 3000
           })
         }
-        self.listLoading = false
+        self.listLoading = false;
       })
     }
   }

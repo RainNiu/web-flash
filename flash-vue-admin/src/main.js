@@ -26,10 +26,10 @@ import '@/permission' // permission control
  */
 
 // set ElementUI lang to EN
-Vue.use(ElementUI, {   i18n: (key, value) => i18n.t(key, value) })
+Vue.use(ElementUI, {   i18n: (key, value) => i18n.t(key, value) });
 
-Vue.component('v-chart', ECharts)
-Vue.config.productionTip = false
+Vue.component('v-chart', ECharts);
+Vue.config.productionTip = false;
 
 new Vue({
   el: '#app',
@@ -37,4 +37,4 @@ new Vue({
   store,
   i18n,
   render: h => h(App)
-})
+});

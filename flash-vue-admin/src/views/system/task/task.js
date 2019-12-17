@@ -44,52 +44,52 @@ export default {
         published: 'success',
         draft: 'gray',
         deleted: 'danger'
-      }
-      return statusMap[status]
+      };
+      return statusMap[status];
     }
   },
   created() {
-    this.init()
+    this.init();
   },
   methods: {
     init() {
-      this.fetchData()
+      this.fetchData();
     },
     fetchData() {
-      this.listLoading = true
+      this.listLoading = true;
       getList(this.listQuery).then(response => {
-        this.list = response.data
-        this.listLoading = false
+        this.list = response.data;
+        this.listLoading = false;
       })
     },
     search() {
-      this.fetchData()
+      this.fetchData();
     },
     reset() {
-      this.listQuery.name = ''
-      this.fetchData()
+      this.listQuery.name = '';
+      this.fetchData();
     },
     handleFilter() {
-      this.listQuery.page = 1
-      this.getList()
+      this.listQuery.page = 1;
+      this.getList();
     },
     handleClose() {
 
     },
     handleCurrentChange(currentRow, oldCurrentRow) {
-      this.selRow = currentRow
+      this.selRow = currentRow;
     },
     resetForm() {
       this.form = {}
     },
     add() {
-      this.resetForm()
-      this.formTitle = '添加任务'
-      this.formVisible = true
-      this.isAdd = true
+      this.resetForm();
+      this.formTitle = '添加任务';
+      this.formVisible = true;
+      this.isAdd = true;
     },
     save() {
-      var self = this
+      var self = this;
       this.$refs['form'].validate((valid) => {
         if (valid) {
           save({
@@ -100,28 +100,28 @@ export default {
             data: self.form.data,
             note: self.form.note
           }).then(response => {
-            console.log(response)
+            console.log(response);
             this.$message({
               message: '提交成功',
               type: 'success'
-            })
-            this.fetchData()
-            this.formVisible = false
+            });
+            this.fetchData();
+            this.formVisible = false;
           })
         } else {
-          return false
+          return false;
         }
       })
     },
     checkSel() {
       if (this.selRow && this.selRow.id) {
-        return true
+        return true;
       }
       this.$message({
         message: '请选中操作项',
         type: 'warning'
-      })
-      return false
+      });
+      return false;
     },
     enable(id) {
       this.$confirm('确定启用该定时任务?', '提示', {
@@ -133,8 +133,8 @@ export default {
           this.$message({
             message: '操作成功',
             type: 'success'
-          })
-          this.fetchData()
+          });
+          this.fetchData();
         })
       }).catch(() => {
       })
@@ -149,26 +149,26 @@ export default {
           this.$message({
             message: '操作成功',
             type: 'success'
-          })
-          this.fetchData()
+          });
+          this.fetchData();
         })
       }).catch(() => {
       })
     },
     viewLog(taskId) {
-      this.$router.push({ path: '/taskLog', query: { taskId: taskId }})
+      this.$router.push({ path: '/taskLog', query: { taskId: taskId }});
     },
     edit() {
       if (this.checkSel()) {
-        this.isAdd = false
-        this.form = this.selRow
-        this.formTitle = '修改任务'
-        this.formVisible = true
+        this.isAdd = false;
+        this.form = this.selRow;
+        this.formTitle = '修改任务';
+        this.formVisible = true;
       }
     },
     remove() {
       if (this.checkSel()) {
-        var id = this.selRow.id
+        var id = this.selRow.id;
         this.$confirm('确定删除该记录?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -178,8 +178,8 @@ export default {
             this.$message({
               message: '操作成功',
               type: 'success'
-            })
-            this.fetchData()
+            });
+            this.fetchData();
           })
         }).catch(() => {
         })

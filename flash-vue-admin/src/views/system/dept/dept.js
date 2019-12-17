@@ -43,69 +43,69 @@ export default {
     }
   },
   created() {
-    this.fetchData()
+    this.fetchData();
   },
   methods: {
     fetchData() {
-      this.listLoading = true
+      this.listLoading = true;
       list().then(response => {
-        this.data = response.data
-        this.listLoading = false
+        this.data = response.data;
+        this.listLoading = false;
       })
     },
     handleNodeClick(data, node) {
-      console.log(data)
-      this.form.pid = data.id
-      this.form.pname = data.simplename
-      this.showTree = false
+      console.log(data);
+      this.form.pid = data.id;
+      this.form.pname = data.simplename;
+      this.showTree = false;
     },
     checkSel() {
       if (this.selRow && this.selRow.id) {
-        return true
+        return true;
       }
       this.$message({
         message: '请选中操作项',
         type: 'warning'
-      })
-      return false
+      });
+      return false;
     },
     add() {
-      this.form = {}
-      this.formTitle = '添加菜单'
-      this.formVisible = true
-      this.isAdd = true
+      this.form = {};
+      this.formTitle = '添加菜单';
+      this.formVisible = true;
+      this.isAdd = true;
     },
     save() {
-      var self = this
+      var self = this;
       this.$refs['form'].validate((valid) => {
         if (valid) {
-          console.log('form', self.form)
-          const menuData = {id:self.form.id,simplename:self.form.simplename,fullname:self.form.fullname,num:self.form.num,pid:self.form.pid,tips:self.form.tips}//self.form
-          menuData.parent = null
+          console.log('form', self.form);
+          const menuData = {id:self.form.id,simplename:self.form.simplename,fullname:self.form.fullname,num:self.form.num,pid:self.form.pid,tips:self.form.tips};//self.form
+          menuData.parent = null;
           save(menuData).then(response => {
-            console.log(response)
+            console.log(response);
             this.$message({
               message: '提交成功',
               type: 'success'
-            })
-            self.fetchData()
-            self.formVisible = false
+            });
+            self.fetchData();
+            self.formVisible = false;
           })
         } else {
-          return false
+          return false;
         }
       })
     },
     edit(row) {
-      this.form = row
+      this.form = row;
 
       if (row.parent) {
-        this.form.pid = row.parent.id
-        this.form.pname = row.parent.simplename
+        this.form.pid = row.parent.id;
+        this.form.pname = row.parent.simplename;
       }
-      this.formTitle = '编辑部门'
-      this.formVisible = true
-      this.isAdd = false
+      this.formTitle = '编辑部门';
+      this.formVisible = true;
+      this.isAdd = false;
     },
     remove(row) {
       this.$confirm('确定删除该记录?', '提示', {
@@ -117,8 +117,8 @@ export default {
           this.$message({
             message: '删除成功',
             type: 'success'
-          })
-          this.fetchData()
+          });
+          this.fetchData();
         })
       })
     }

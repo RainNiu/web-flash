@@ -11,14 +11,14 @@ export default {
       } else {
         callback()
       }
-    }
+    };
     const validatePassword = (rule, value, callback) => {
       if (value.length < 5) {
         callback(new Error(this.$t('login.errorPassword')))
       } else {
         callback()
       }
-    }
+    };
     return {
       loginForm: {
         username: '',
@@ -35,23 +35,23 @@ export default {
   methods: {
     showPwd() {
       if (this.pwdType === 'password') {
-        this.pwdType = ''
+        this.pwdType = '';
       } else {
-        this.pwdType = 'password'
+        this.pwdType = 'password';
       }
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.loading = true
+          this.loading = true;
           this.$store.dispatch('user/login', this.loginForm).then(() => {
-            this.loading = false
+            this.loading = false;
             this.$router.push({ path: '/' })
           }).catch((err) => {
-            this.loading = false
+            this.loading = false;
           })
         } else {
-          return false
+          return false;
         }
       })
     }

@@ -33,8 +33,8 @@ export default {
         published: 'success',
         draft: 'gray',
         deleted: 'danger'
-      }
-      return statusMap[status]
+      };
+      return statusMap[status];
     }
   },
   computed: {
@@ -50,55 +50,55 @@ export default {
     }
   },
   created() {
-    this.init()
+    this.init();
   },
   methods: {
     init() {
-      this.fetchData()
+      this.fetchData();
       queryAll().then(response => {
-        this.sendList = response.data
+        this.sendList = response.data;
       })
     },
     fetchData() {
-      this.listLoading = true
+      this.listLoading = true;
       getList(this.listQuery).then(response => {
-        this.list = response.data.records
-        this.listLoading = false
-        this.total = response.data.total
+        this.list = response.data.records;
+        this.listLoading = false;
+        this.total = response.data.total;
       })
     },
     search() {
-      this.fetchData()
+      this.fetchData();
     },
     reset() {
-      this.listQuery.id = ''
-      this.fetchData()
+      this.listQuery.id = '';
+      this.fetchData();
     },
     handleFilter() {
-      this.listQuery.page = 1
-      this.getList()
+      this.listQuery.page = 1;
+      this.getList();
     },
     handleClose() {
 
     },
     fetchNext() {
-      this.listQuery.page = this.listQuery.page + 1
-      this.fetchData()
+      this.listQuery.page = this.listQuery.page + 1;
+      this.fetchData();
     },
     fetchPrev() {
-      this.listQuery.page = this.listQuery.page - 1
-      this.fetchData()
+      this.listQuery.page = this.listQuery.page - 1;
+      this.fetchData();
     },
     fetchPage(page) {
-      this.listQuery.page = page
-      this.fetchData()
+      this.listQuery.page = page;
+      this.fetchData();
     },
     changeSize(limit) {
-      this.listQuery.limit = limit
-      this.fetchData()
+      this.listQuery.limit = limit;
+      this.fetchData();
     },
     handleCurrentChange(currentRow, oldCurrentRow) {
-      this.selRow = currentRow
+      this.selRow = currentRow;
     },
     resetForm() {
       this.form = {
@@ -111,55 +111,55 @@ export default {
       }
     },
     add() {
-      this.resetForm()
-      this.formTitle = '添加消息模板',
-      this.formVisible = true
-      this.isAdd = true
+      this.resetForm();
+      this.formTitle = '添加消息模板';
+      this.formVisible = true;
+      this.isAdd = true;
     },
     save() {
       this.$refs['form'].validate((valid) => {
         if (valid) {
           save({
-      code:this.form.code,
-      title:this.form.title,
-      content:this.form.content,
-      cond:this.form.cond,
-      idMessageSender:this.form.idMessageSender,
+            code:this.form.code,
+            title:this.form.title,
+            content:this.form.content,
+            cond:this.form.cond,
+            idMessageSender:this.form.idMessageSender,
             id: this.form.id
           }).then(response => {
             this.$message({
               message: this.$t('common.optionSuccess'),
               type: 'success'
-            })
-            this.fetchData()
-            this.formVisible = false
+            });
+            this.fetchData();
+            this.formVisible = false;
           })
         } else {
-          return false
+          return false;
         }
       })
     },
     checkSel() {
       if (this.selRow && this.selRow.id) {
-        return true
+        return true;
       }
       this.$message({
         message: this.$t('common.mustSelectOne'),
         type: 'warning'
-      })
-      return false
+      });
+      return false;
     },
     edit() {
       if (this.checkSel()) {
-        this.isAdd = false
-        this.form = this.selRow
-        this.formTitle = '编辑消息模板'
-        this.formVisible = true
+        this.isAdd = false;
+        this.form = this.selRow;
+        this.formTitle = '编辑消息模板';
+        this.formVisible = true;
       }
     },
     remove() {
       if (this.checkSel()) {
-        var id = this.selRow.id
+        var id = this.selRow.id;
         this.$confirm(this.$t('common.deleteConfirm'), this.$t('common.tooltip'), {
           confirmButtonText: this.$t('button.submit'),
           cancelButtonText: this.$t('button.cancel'),
@@ -169,8 +169,8 @@ export default {
             this.$message({
               message: this.$t('common.optionSuccess'),
               type: 'success'
-            })
-            this.fetchData()
+            });
+            this.fetchData();
           })
         }).catch(() => {
         })
