@@ -54,11 +54,6 @@
           {{scope.row.email}}
         </template>
       </el-table-column>
-      <el-table-column label="创建时间">
-        <template slot-scope="scope">
-          {{scope.row.createtime}}
-        </template>
-      </el-table-column>
       <el-table-column label="状态">
         <template slot-scope="scope">
           {{scope.row.statusName}}

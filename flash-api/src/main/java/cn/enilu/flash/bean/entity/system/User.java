@@ -19,7 +19,7 @@ import java.util.Date;
 @Table(appliesTo = "t_sys_user",comment = "账号")
 @Data
 @EntityListeners(AuditingEntityListener.class)
-public class User  extends BaseEntity {
+public class User extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(32) COMMENT '账户'")
     private String account;
     @Column(columnDefinition = "VARCHAR(64) COMMENT '密码'")

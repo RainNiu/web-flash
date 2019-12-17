@@ -25,11 +25,7 @@ public class UserFactory {
             return null;
         }else{
             user.setName(userDto.getName());
-            user.setDeptid(userDto.getDeptid());
-            user.setSex(userDto.getSex());
-            user.setPhone(userDto.getPhone());
             user.setEmail(userDto.getEmail());
-            user.setBirthday(userDto.getBirthday());
             if(userDto.getStatus()!=null){
                 user.setStatus(userDto.getStatus());
             }

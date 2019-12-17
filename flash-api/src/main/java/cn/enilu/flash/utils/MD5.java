@@ -150,16 +150,13 @@ public class MD5 {
      * shiro密码加密工具类
      *
      * @param credentials 密码
-     * @param salt        密码盐
      * @return
      */
-    public static String md5(String credentials, String salt) {
+    public static String md5(String credentials) {
         MessageDigest messageDigest = null;
         try {
             messageDigest = MessageDigest.getInstance("MD5");
             messageDigest.reset();
-            //先加盐
-            messageDigest.update(salt.getBytes("UTF-8"));
             //再放需要被加密的数据
             messageDigest.update(credentials.getBytes("UTF-8"));
         } catch (NoSuchAlgorithmException e) {
@@ -183,7 +180,4 @@ public class MD5 {
         return md5StrBuff.toString();
     }
 
-    public static void main(String[] args) {
-        System.out.println(MD5.md5("admin", "8pgby"));
-    }
 }

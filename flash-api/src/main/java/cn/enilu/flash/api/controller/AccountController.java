@@ -58,7 +58,7 @@ public class AccountController extends BaseController{
             if (user == null) {
                 return Rets.failure("该用户不存在");
             }
-            String passwdMd5 = MD5.md5(password, user.getSalt());
+            String passwdMd5 = MD5.md5(password);
             //2,
             if (!user.getPassword().equals(passwdMd5)) {
                 return Rets.failure("输入的密码错误");
@@ -115,12 +115,12 @@ public class AccountController extends BaseController{
             if(ApiConstants.ADMIN_ACCOUNT.equals(user.getAccount())){
                 return Rets.failure("不能修改超级管理员密码");
             }
-            logger.info("oldPassword:{},password:{},rePassword:{}",MD5.md5(oldPassword, user.getSalt()),password,rePassword);
-            if(!MD5.md5(oldPassword, user.getSalt()).equals(user.getPassword())){
+            logger.info("oldPassword:{},password:{},rePassword:{}",MD5.md5(oldPassword),password,rePassword);
+            if(!MD5.md5(oldPassword).equals(user.getPassword())){
                 return Rets.failure("旧密码输入错误");
             }
 
-            user.setPassword(MD5.md5(password, user.getSalt()));
+            user.setPassword(MD5.md5(password));
             userService.update(user);
             return Rets.success();
         } catch (Exception e) {

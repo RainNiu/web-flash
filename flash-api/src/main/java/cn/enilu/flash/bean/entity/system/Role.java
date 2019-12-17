@@ -29,7 +29,5 @@ public class Role extends BaseEntity {
     private String name;
     @Column
     private String tips;
-    @Column
-    private Integer version;
 
 }

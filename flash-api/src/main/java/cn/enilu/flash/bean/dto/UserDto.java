@@ -21,14 +21,10 @@ public class UserDto{
 	private String account;
 	@NotBlank(message = "密码不能为空")
 	private String password;
-	private String salt;
 	@NotBlank(message = "姓名不能为空")
 	private String name;
 	private String email;
 	private String roleid;
-	private Long eduorgid;
 	private Integer status;
-	private Date createtime;
-
 
 }

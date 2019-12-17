@@ -1,5 +1,4 @@
 import { deleteUser, getList, saveUser, remove, setRole } from '@/api/system/user'
-import { parseTime } from '@/utils/index'
 import { roleTreeListByIdUser } from '@/api/system/role'
 // 权限判断指令
 import permission from '@/directive/permission/index.js'
@@ -157,7 +156,6 @@ export default {
               //冻结
               form.status = 2;
             }
-            form.createtime = parseTime(form.createtime);
             saveUser(form).then(response => {
               this.$message({
                 message: '提交成功',

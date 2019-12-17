@@ -68,8 +68,7 @@ public class UserController extends BaseController {
                 throw new ApplicationException(BizExceptionEnum.USER_ALREADY_REG);
             }
             // 完善账号信息
-            user.setSalt(RandomUtil.getRandomString(5));
-            user.setPassword(MD5.md5(user.getPassword(), user.getSalt()));
+            user.setPassword(MD5.md5(user.getPassword()));
             user.setStatus(ManagerStatus.OK.getCode());
             userService.insert(UserFactory.createUser(user, new User()));
         }else{
@@ -110,5 +109,4 @@ public class UserController extends BaseController {
         userService.update(user);
         return Rets.success();
     }
-
 }
