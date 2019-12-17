@@ -31,7 +31,7 @@ public class TableDescLoader extends AbstractLoader {
                                                      String baseUri,
                                                      String servPackageName,
                                                      String repositoryPackageName,
-                                                     String modPackageName) throws SQLException {
+                                                     String modPackageName, String includePattern) throws SQLException {
 
 
         DataSource ds = ioc.get(DataSource.class);

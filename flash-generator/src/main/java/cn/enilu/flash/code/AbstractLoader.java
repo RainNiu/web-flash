@@ -3,6 +3,7 @@ package cn.enilu.flash.code;
 import org.nutz.ioc.Ioc;
 
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * 基础的数据结构加载器<br>
@@ -12,10 +13,10 @@ import java.util.Map;
 public abstract class AbstractLoader {
 
     public abstract Map<String, TableDescriptor> loadTables(Ioc ioc,
-                                                   String basePackageName, String baseUri,
+                                                            String basePackageName, String baseUri,
                                                             String servPackageName,
                                                             String repositoryPackageName,
-                                                            String modPackageName) throws Exception;
+                                                            String modPackageName, String includePattern) throws Exception;
 
 
     }

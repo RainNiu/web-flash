@@ -67,7 +67,6 @@ public class Generator {
         String configPath = "code/code.json";
         String basePath = "";
         String outputDir = "src/main/java";
-        String module = "";
         String basePackageName = "";
         String controllerPackageName = "";
         String servicePackageName = "";
@@ -95,11 +94,10 @@ public class Generator {
         try {
             CommandLine commandLine = parser.parse(options, args);
             if (commandLine.hasOption("i")) {
-                includePattern = Pattern.compile(commandLine.getOptionValue("i"),
-                        Pattern.CASE_INSENSITIVE);
+                includePattern = Pattern.compile(commandLine.getOptionValue("i"), Pattern.CASE_INSENSITIVE);
             }
             if(commandLine.hasOption("basePath")){
-                basePath =commandLine.getOptionValue("basePath")+File.separator;
+                basePath = commandLine.getOptionValue("basePath")+File.separator;
             }
             if (commandLine.hasOption("p")) {
                 basePackageName = commandLine.getOptionValue("p");
@@ -111,14 +109,8 @@ public class Generator {
                 servicePackageName = commandLine.getOptionValue("sev");
             }
             if (commandLine.hasOption("mod")) {
-                module =  commandLine.getOptionValue("mod");
-                module = module.split("\\.")[module.split("\\.").length-1];
-                controllerPackageName = "api.controller."+module;
-                servicePackageName = "service."+module;
-                repositoryPackageName = "dao."+module;
-                modelPackageName = "bean.entity."+module;
+                modelPackageName =  commandLine.getOptionValue("mod");
             }
-
             if (commandLine.hasOption("repo")) {
                 repositoryPackageName = commandLine.getOptionValue("repo");
             }
@@ -146,7 +138,7 @@ public class Generator {
                                                                 baseUri,
                                                                 servicePackageName,
                                                                 repositoryPackageName,
-                                                                modelPackageName);
+                                                                modelPackageName, includePattern.pattern());
         for (Map.Entry<String, TableDescriptor> entry : tables.entrySet()) {
             if (includePattern != null) {
                 String className = entry.getValue().getEntityClassName();

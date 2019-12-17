@@ -12,6 +12,7 @@
         <module>flash-api</module>
         <module>flash-core</module>
         <module>flash-generator</module>
+        <module>ht-dlis-management</module>
     </modules>
 
     <properties>
