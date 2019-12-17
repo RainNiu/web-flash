@@ -11,7 +11,6 @@
     <modules>
         <module>flash-api</module>
         <module>flash-core</module>
-        <module>flash-generator</module>
     </modules>
 
     <properties>
