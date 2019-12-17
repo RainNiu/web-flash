@@ -147,13 +147,6 @@ public interface IConstantFactory {
      * @return
      */
     List<Dict> getDicts(String pname);
-    /**
-     * 获取全局参数
-     * @param cfgName
-     * @return
-     */
-    String getCfg(String cfgName);
-
 
     Role getRole(Long id) ;
     Dept getDept(Long id);

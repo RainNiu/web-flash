@@ -1,6 +1,5 @@
 package cn.enilu.flash.core.listener;
 
-import cn.enilu.flash.cache.ConfigCache;
 import cn.enilu.flash.cache.DictCache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,13 +18,10 @@ import org.springframework.stereotype.Component;
 public class CacheListener implements CommandLineRunner {
 
     @Autowired
-    private ConfigCache configCache;
-    @Autowired
     private DictCache dictCache;
     private Logger logger = LoggerFactory.getLogger(CacheListener.class);
 
     public void loadCache() {
-        configCache.cache();
         dictCache.cache();
     }
 

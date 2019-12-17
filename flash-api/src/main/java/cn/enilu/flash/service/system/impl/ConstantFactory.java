@@ -6,7 +6,6 @@ import cn.enilu.flash.bean.constant.state.MenuStatus;
 import cn.enilu.flash.bean.entity.system.*;
 import cn.enilu.flash.bean.vo.DictVo;
 import cn.enilu.flash.bean.vo.SpringContextHolder;
-import cn.enilu.flash.cache.ConfigCache;
 import cn.enilu.flash.cache.DictCache;
 import cn.enilu.flash.dao.system.*;
 import cn.enilu.flash.service.system.IConstantFactory;
@@ -41,7 +40,6 @@ public class ConstantFactory implements IConstantFactory {
     private UserRepository userRepository = SpringContextHolder.getBean(UserRepository.class);
     private MenuRepository menuRepository = SpringContextHolder.getBean(MenuRepository.class);
     private NoticeRepository sysNoticeRepository = SpringContextHolder.getBean(NoticeRepository.class);
-    private ConfigCache configCache = SpringContextHolder.getBean(ConfigCache.class);
 
     public static IConstantFactory me() {
         return SpringContextHolder.getBean("constantFactory");
@@ -386,16 +384,6 @@ public class ConstantFactory implements IConstantFactory {
         return dictCache.getDictsByPname(pname);
     }
 
-    @Override
-    public String getCfg(String cfgName) {
-        String val = get(CacheKey.CFG + cfgName);
-        if (StringUtil.isNotEmpty(val)) {
-            return val;
-        }
-        val = (String) configCache.get(cfgName);
-        set(CacheKey.CFG + cfgName, val);
-        return val;
-    }
     @Override
     public Role getRole(Long id) {
         Optional<Role> optional = roleRepository.findById(id);
