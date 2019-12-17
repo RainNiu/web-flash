@@ -9,9 +9,6 @@ package cn.enilu.flash.bean.enumeration;
 public interface Permission {
 
     //系统管理
-    String CFG = "cfg";
-    String CFG_EDIT = "cfgEdit";
-    String CFG_DEL = "cfgDelete";
     String DICT = "dict";
     String DICT_EDIT = "dictEdit";
     String LOG = "log";
@@ -21,9 +18,6 @@ public interface Permission {
     String ROLE = "role";
     String ROLE_EDIT = "roleEdit";
     String ROLE_DEL = "roleDelete";
-    String TASK = "task";
-    String TASK_EDIT = "taskEdit";
-    String TASK_DEL = "taskDelete";
     String MENU = "menu";
     String MENU_EDIT = "menuEdit";
     String MENU_DEL = "menuDelete";
@@ -33,30 +27,5 @@ public interface Permission {
     String DEPT = "dept";
     String DEPT_EDIT = "deptEdit";
     String DEPT_DEL = "deptDelete";
-
-    //消息管理
-    String MSG = "msg";
-    String MSG_CLEAR = "msgClear";
-    String MSG_SENDER = "msgSender";
-    String MSG_SENDER_EDIT = "msgSenderEdit";
-    String MSG_SENDER_DEL = "msgSenderDelete";
-    String MSG_TPL = "msgTpl";
-    String MSG_TPL_EDIT = "msgTplEdit";
-    String MSG_TPL_DEL = "msgTplDelete";
-
-    //CMS管理
-    String ARTICLE = "article";
-    String ARTICLE_EDIT = "editArticle";
-    String ARTICLE_DEL = "deleteArticle";
-    String BANNER = "banner";
-    String BANNER_EDIT = "bannerEdit";
-    String BANNER_DEL = "bannerDelete";
-    String CHANNEL = "channel";
-    String CHANNEL_EDIT = "channelEdit";
-    String CHANNEL_DEL = "channelDelete";
-    String CONTACTS = "contacts";
-    String FILE = "file";
-    String FILE_UPLOAD = "fileUpload";
-
 
 }
