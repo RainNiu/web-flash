@@ -1,6 +1,5 @@
 package ${packageName};
 
-
 import ${table.EntityFullClassName};
 import ${table.basePackageName}.${table.repoPackageName}.${table.EntityClassName}Repository;
 
@@ -10,11 +9,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author GeneratorUtil
+ * @version Id: ${table.ServiceClassName}.java, v0.1 13/02/2019 16:46 GeneratorUtil Exp $
+ */
 @Service
-public class ${table.ServiceClassName} extends BaseService<${table.EntityClassName},Long,${table.RepositoryClassName}>  {
-    private Logger logger = LoggerFactory.getLogger(getClass());
+public class ${table.ServiceClassName} extends BaseService<${table.EntityClassName}, Long, ${table.RepositoryClassName}> {
+
+    private static final Logger logger = LoggerFactory.getLogger(${table.ServiceClassName}.class);
+
     @Autowired
     private ${table.RepositoryClassName} ${table.entityNameLowerFirstChar}Repository;
 
 }
-

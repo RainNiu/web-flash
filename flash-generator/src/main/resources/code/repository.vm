@@ -1,11 +1,12 @@
 package ${packageName};
 
-
 import ${table.EntityFullClassName};
 import cn.enilu.flash.dao.BaseRepository;
 
-
-public interface ${table.RepositoryClassName} extends BaseRepository<${table.EntityClassName},Long>{
+/**
+ * @author GeneratorUtil
+ * @version Id: ${table.RepositoryClassName}.java, v0.1 13/02/2019 16:46 GeneratorUtil Exp $
+ */
+public interface ${table.RepositoryClassName} extends BaseRepository<${table.EntityClassName}, Long> {
 
 }
-

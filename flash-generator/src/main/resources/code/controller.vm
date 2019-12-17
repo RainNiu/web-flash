@@ -10,8 +10,6 @@ import ${table.basePackageName}.bean.enumeration.BizExceptionEnum;
 import ${table.basePackageName}.bean.exception.ApplicationException;
 import ${table.basePackageName}.bean.vo.front.Rets;
 
-import ${table.basePackageName}.utils.Maps;
-import ${table.basePackageName}.utils.ToolUtil;
 import ${table.basePackageName}.utils.factory.Page;
 
 import org.slf4j.Logger;
@@ -20,22 +18,40 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author GeneratorUtil
+ * @version Id: ${table.ControllerClassName}.java, v0.1 13/02/2019 16:46 GeneratorUtil Exp $
+ */
 @RestController
 @RequestMapping("${table.UriPrefix}")
 public class ${table.ControllerClassName} {
-	private  Logger logger = LoggerFactory.getLogger(getClass());
+
+	private static final Logger logger = LoggerFactory.getLogger(${table.ControllerClassName}.class);
+
 	@Autowired
 	private ${table.ServiceClassName} ${table.ServiceInstanceName};
 
-	@RequestMapping(value = "/list",method = RequestMethod.GET)
+	/**
+     * 查询${table.Label}列表
+	 *
+	 * @return
+	 */
+    @GetMapping(value = "/list")
 	public Object list() {
 	Page<${table.EntityClassName}> page = new PageFactory<${table.EntityClassName}>().defaultPage();
 		page = ${table.ServiceInstanceName}.queryPage(page);
 		return Rets.success(page);
 	}
-	@RequestMapping(method = RequestMethod.POST)
-	@BussinessLog(value = "编辑${table.Label}", key = "name",dict= CommonDict.class)
-	public Object save(@ModelAttribute ${table.EntityClassName} ${table.EntityInstanceName}){
+
+	/**
+	 * 新增或修改${table.Label}
+	 *
+	 * @param ${table.EntityInstanceName}
+     * @return
+	 */
+    @PostMapping
+	@BussinessLog(value = "新增或修改${table.Label}", key = "name", dict = CommonDict.class)
+	public Object save(@RequestBody ${table.EntityClassName} ${table.EntityInstanceName}){
 		if(${table.EntityInstanceName}.getId()==null){
 			${table.ServiceInstanceName}.insert(${table.EntityInstanceName});
 		}else {
@@ -43,8 +59,15 @@ public class ${table.ControllerClassName} {
 		}
 		return Rets.success();
 	}
-	@RequestMapping(method = RequestMethod.DELETE)
-	@BussinessLog(value = "删除${table.Label}", key = "id",dict= CommonDict.class)
+
+	/**
+	 * 根据Id删除${table.Label}
+	 *
+	 * @param id
+	 * @return
+	 */
+    @DeleteMapping
+	@BussinessLog(value = "根据Id删除${table.Label}", key = "id", dict = CommonDict.class)
 	public Object remove(Long id){
 		if (id == null) {
 			throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
