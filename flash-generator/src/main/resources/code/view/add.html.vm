@@ -66,5 +66,3 @@ layout("/layouts/platform.html"){
     });
 </script>
 <%}%>
-
-
