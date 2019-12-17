@@ -77,11 +77,6 @@ public interface IConstantFactory {
     String getDictName(Long dictId);
 
     /**
-     * 获取通知标题
-     */
-    String getNoticeTitle(Long dictId);
-
-    /**
      * 根据字典名称和字典中的值获取对应的名称
      */
     String getDictsByName(String name, String val);
@@ -152,5 +147,4 @@ public interface IConstantFactory {
     Dept getDept(Long id);
     Menu getMenu(Long id) ;
 
-    Notice getNotice(Long id);
 }

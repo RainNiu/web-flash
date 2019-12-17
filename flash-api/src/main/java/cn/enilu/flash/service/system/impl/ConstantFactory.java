@@ -39,7 +39,6 @@ public class ConstantFactory implements IConstantFactory {
     private DictRepository dictRepository = SpringContextHolder.getBean(DictRepository.class);
     private UserRepository userRepository = SpringContextHolder.getBean(UserRepository.class);
     private MenuRepository menuRepository = SpringContextHolder.getBean(MenuRepository.class);
-    private NoticeRepository sysNoticeRepository = SpringContextHolder.getBean(NoticeRepository.class);
 
     public static IConstantFactory me() {
         return SpringContextHolder.getBean("constantFactory");
@@ -253,21 +252,6 @@ public class ConstantFactory implements IConstantFactory {
     }
 
     /**
-     * 获取通知标题
-     */
-    @Override
-    public String getNoticeTitle(Long id) {
-
-        Notice notice = getNotice(id);
-        if (notice == null) {
-            return "";
-        } else {
-            return notice.getTitle();
-        }
-
-    }
-
-    /**
      * 根据字典名称和字典中的值获取对应的名称
      */
     @Override
@@ -405,14 +389,6 @@ public class ConstantFactory implements IConstantFactory {
         Optional<Menu> optiona = menuRepository.findById(id);
         if (optiona.isPresent()) {
             return optiona.get();
-        }
-        return null;
-    }
-    @Override
-    public Notice getNotice(Long id) {
-        Optional<Notice> optional = sysNoticeRepository.findById(id);
-        if (optional.isPresent()) {
-            return optional.get();
         }
         return null;
     }

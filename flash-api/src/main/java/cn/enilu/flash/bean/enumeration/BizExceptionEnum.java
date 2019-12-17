@@ -16,14 +16,6 @@ public enum BizExceptionEnum implements ServiceExceptionEnum {
 	ERROR_CREATE_DICT(500,"创建字典失败"),
 	ERROR_WRAPPER_FIELD(500,"包装字典属性失败"),
 
-
-	/**
-	 * 文件上传
-	 */
-	FILE_READING_ERROR(400,"FILE_READING_ERROR!"),
-	FILE_NOT_FOUND(400,"FILE_NOT_FOUND!"),
-	UPLOAD_ERROR(500,"上传图片出错"),
-
 	/**
 	 * 权限和数据问题
 	 */

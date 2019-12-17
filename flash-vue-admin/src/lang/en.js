@@ -3,30 +3,15 @@ export default {
     dashboard: 'Dashboard',
     system: 'System',
     operationMgr: 'Operation',
-    messageMgr: 'Message',
-    cms: 'Cms',
     menu: 'Menu',
     dept: 'Department',
     mgr: 'Account',
     role: 'Role',
-    task: 'Cron',
-    taskLog: 'Cron Log',
     dict: 'Dict',
     loginLog: 'Login Log',
     log: 'Bussiness Log',
-    cfg: 'Config',
-
-    banner: 'Banner',
-    article: 'Article',
-    editArticle: 'Edit Article',
-    file: 'File',
-    contacts: 'Contacts',
-    channel: 'Channel',
     druid: 'Monitor',
-    swagger: 'Docs',
-    msg: 'History',
-    msgTpl: 'Template',
-    msgSender: 'Sender'
+    swagger: 'Docs'
   },
   navbar: {
     logOut: 'Log Out',
@@ -39,13 +24,14 @@ export default {
     size: 'Global Size'
   },
   login: {
-    title: 'web-flash',
+    title: 'Manage System',
     errorAccount: 'Please enter the correct user name',
     errorPassword: 'The password can not be less than 5 digits',
     logIn: 'Log in',
     username: 'Username',
     password: 'Password'
   },
+
   button: {
     add: 'Add',
     edit: 'Edit',
@@ -64,7 +50,6 @@ export default {
     tooltip: 'Tooltip',
     warning: 'Warning',
     optionSuccess: 'success',
-    uploadError: 'Upload Error',
     isRequired: ' is required',
     week: {
       mon: 'Mon',
@@ -75,33 +60,5 @@ export default {
       sat: 'Sat',
       sun: 'Sun'
     }
-  },
-
-  dashboard: {
-    newUser: 'New Users',
-    message: 'Message',
-    income: 'Income',
-    onlineUser: 'Online User',
-    document: 'Document',
-    date: 'Date',
-    name: 'Name',
-    addr: 'Address',
-    // '邮件营销','联盟广告','视频广告','直接访问','搜索引擎'
-    email: 'Email',
-    ad: 'Ad',
-    vedio: 'Vedio',
-    direct: 'Direct',
-    searchEngine: 'Search engine',
-    userFrom: 'User from'
-  },
-  config: {
-    name: 'Config Name',
-    value: 'Config Value',
-    descript: 'Descript',
-    add: 'Add Config',
-    edit: 'Edit Config',
-    nameInput: 'Input config name',
-    valueInput: 'Input config value',
-    lengthValidation: ' must be between 2 and 20 characters'
   }
 }
