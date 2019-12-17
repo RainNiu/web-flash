@@ -15,4 +15,4 @@ module.exports = {
   sidebarLogo: false,
 
   tagsView: true
-}
+};
