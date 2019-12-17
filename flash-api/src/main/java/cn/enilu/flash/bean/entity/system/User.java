@@ -24,8 +24,6 @@ public class User extends BaseEntity {
     private String account;
     @Column(columnDefinition = "VARCHAR(64) COMMENT '密码'")
     private String password;
-    @Column(columnDefinition = "VARCHAR(16) COMMENT '密码盐'")
-    private String salt;
     @Column(columnDefinition = "VARCHAR(64) COMMENT '姓名'")
     private String name;
     @Column(columnDefinition = "VARCHAR(64) COMMENT 'email'")
